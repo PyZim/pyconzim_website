@@ -51,7 +51,7 @@ def contact(request):
             obj.save()
 
             # send email to pycon_zim@gmail.com
-            subject = "Message on Feedback Form "
+            subject = "Message on Contact Form "
             message = 'A message was submitted on the website\n\n'
             message += 'Name: ' + contact_form.cleaned_data['name'] + '\n'
             message += 'Email: ' + contact_form.cleaned_data['email'] + '\n'
