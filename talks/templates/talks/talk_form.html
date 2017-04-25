@@ -1,0 +1,23 @@
+{% extends 'website/base_two.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+    <form action="{% url 'talks:submit_talk' %}">
+    {% crispy form form.helper %}
+        {% csrf_token %}
+        </form>
+        </div>
+    <div class="col-md-1">
+
+    </div>
+</div>
+
+{% endblock %}

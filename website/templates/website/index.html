@@ -1,0 +1,189 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+ <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <img src="{% static 'website/img/pyconlogo.png' %}" width="300" height="300">
+                <br />
+                <h1>PYCON ZIMBABWE 2017</h1>
+                <h3>HARARE</h3>
+                <h3>23 - 26 AUGUST</h3>
+                <h4>The conference for the Python programming community in Zimbabwe.</h4>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+        <h1>About PyCon Zimbabwe</h1>
+          <p>PyCon Zimbabwe is organized by volunteers and python enthusiasts from the python programming community in Zimbabwe.</p>
+              <p>The first PyconZim was held from 24-25 November 2016, at the Zesa National Traing Centre. It brought delegates and
+                  speakers from the USA, South Africa, Namibia and Zimbabwe.The second edition of PyConZim is also expected
+                  to bring speakers from Africa and the rest of the world. It will also be held at the ZESA National Training Centre.</p>
+	      <p>The two day conference will bring together students, professionals, experts and enthusiasts who wish to share their
+              knowledge and passion about Python and related technologies. Its purpose is to increase the visibility of developers,
+              organizations, and companies within the community. The conference is suited for all skill levels, from beginners
+              to expert developers. There will also be a <a target="_blank" href="http://djangogirls.org/harare">Django Girls Harare Workshop </a> during the conference.
+	      </p>
+            </div>
+    </section>
+
+    <section id="talks">
+         <div class="container text-center">
+        <div class="align"><i class="icon-megaphone"></i></div>
+        <h1>Call For Proposals</h1>
+        <h2>Want to speak at PyCon Zimbabwe 2017?</h2>
+                 <p>
+              The Python community in Zimbabwe is a relatively new community with an audience of diverse Python experience;
+                     from beginners to expert developers. We are therefore looking for talks that will benefit our diverse audience.
+                     This means we welcome proposals suitable for beginners, people with somewhat knowledge of Python,
+                     very good programmers and expert programmers.
+                     We are looking for talks and workshops which address the following domains:</p>
+             <p> Django Web Framework, </p>
+             <p> Python in Data Science, </p>
+             <p> Python Community, </p>
+             <p> Python in Education </p>
+             <p> and Python Application in various industries. </p>
+             <h3>  <a class="muted" href="{% url 'talks:submit_talk' %}">Please submit a talk proposal!</a></h3>
+             <p>We are accepting proposals for talks, workshops(tutorials), sprints, and demos.</p>
+
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <section id="sponsor-us" class="bg-dark">
+       <div class="container">
+            <h2>Become A Sponsor</h2>
+            <h3>Why we need sponsors</h3>
+            <p>PyConZim is wholly organized by volunteers. We therefore need sponsors to help us cover the costs of:
+            <ul>
+                <li>basic running expenses;</li>
+                <li>Provide a decent location to host PyConZim;</li>
+                <li>Reimburse the travel and accommodation costs of our international speakers;</li>
+                <li>catering and refreshments;</li>
+                <li>educational materials for the tutorials;</li>
+                <li>video recording of talks!</li>
+            </ul>
+              <p>If you are interested and wish to get more information, then please contact us via
+                  <a href="mailto:zim.pycon@gmail.com">zim.pycon@gmail.com</a>.</p>
+
+              <h2>Sponsor Packages</h2>
+              <table>
+                  <tr>
+                      <td><h3>Bronze <span>($500)</span></h3></td>
+                      <td><h3>Silver <span>($1000)</span></h3></td>
+                      <td><h3>Gold <span>($2000)</span></h3></td>
+                      <td><h3>Platinum <span>($5000)</span></h3></td>
+                  </tr>
+                  <tr>
+                      <td> <ul>
+                  <li>Small size logo on the PyConZim website linked to your own website</li>
+                  <li>Small size logo on folders and banners</li>
+              </ul></td>
+                      <td><ul>
+                  <li>Your name mentioned on the PyConZim</li>
+                  <li>Medium size logo on the PyZim website linked to your own website</li>
+                  <li>Medium size logo on folders and banners</li>
+              </ul></td>
+                      <td><ul>
+                  <li>Your name mentioned on the PyConZim website</li>
+                  <li>Introduction section about you on the PyCOnZim website</li>
+                  <li>Big logo on the PyConZim website linked to your own website</li>
+                  <li>Big logo on folders and banners</li>
+              </ul></td>
+                      <td><ul>
+                  <li>Your name mentioned on the PyConZim website</li>
+                  <li>Introduction section about you on the PyCOnZim website</li>
+                  <li>Big logo on the PyConZim website linked to your own website</li>
+                  <li>Big logo on folders and banners</li>
+              </ul></td>
+                  </tr>
+              </table>
+              <br />
+          </div>
+    </section>
+
+    <section id="our-sponsors" class="text-center">
+        <div class="container">
+            <h2>Special Thanks to Our Sponsors</h2>
+
+            {% if corporates %}
+
+            <div class="row">
+		    {% for corporate in corporates %}
+		        <div class="col-xs-2">
+                    <a href="{{ corporate.website }}" target="_blank"><img src="{{ corporate.logo }}"></a>
+                </div>
+                {% endfor %}
+            {% endif %}
+            </div>
+            <br />
+            <hr>
+            <h2>Individual Sponsors</h2>
+            {% if individuals %}
+                    <div class="row">
+                        {% for individual in individuals %}
+		                <div class="col-xs-2">
+                            <a href="{{ individual.website }}" target="_blank">{{ individual.name }}</a>
+                        </div>
+                        {% endfor %}
+
+            {% endif %}
+                    </div>
+            <br />
+            <hr>
+        </div>
+    </section>
+
+<section id="support" class="bg-primary">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Want to Help?</h2>
+
+<hr>
+<p> We are looking for volunteers to help us before the conference as ambassadors. They will help spread the word about
+    the conference via social media and other platforms. We are also looking for helpers during the conference who can
+    help as talk managers.
+<br />
+    <br />
+    You can use the following link to register as a helper/volunteer:
+    <a target="_blank" href="http://bit.ly/2b3rQbR">http://bit.ly/2b3rQbR</a>. </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+       <div class="container">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                   <h2>Join our mailing list for updates</h2>
+                    <p>Sign up for our mailing list and be the first to know when the CFP opens, when the schedule is posted,
+                        and when anything else potentially interesting happens!
+                We promise not to spam you, sell your data, or blow up your inbox.</p>
+             <br />
+                    {% include "website/subscribe.html" %}
+                    <div>
+                        <ul class="nav navabar-nav list-inline">
+                            <li><a class="fa fa-twitter fa-4x" href="https://twitter.com/pycon_zim" target="_blank"><i class="icon-twitter-circled"></i></a></li>
+                            <li><a class="fa fa-facebook fa-4x" href="https://facebook.com/pyconzim" target="_blank"><i class="icon-gplus-circled"></i></a></li>
+                            <li><a class="fa fa-google-plus fa-4x" href="https://groups.google.com/forum/#!forum/zimpy" target="_blank"><i class="icon-flickr"></i></a></li>
+                        </ul>
+            </div>
+            </div>
+
+           <div class="col-lg-6 text-center">
+           <h2>Contact us now!</h2>
+
+               <br />
+              {% include "website/contact.html" %}
+
+        </div>
+           </div>
+            </div>
+    </section>
+
+{% endblock %}

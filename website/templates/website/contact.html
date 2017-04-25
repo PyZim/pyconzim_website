@@ -1,0 +1,7 @@
+{% load crispy_forms_tags %}
+<form action="{% url 'website:contact' %}" method="post">
+{% crispy contact_form contact_form.helper %}
+{% csrf_token %}
+{{ form }}
+</form>
+

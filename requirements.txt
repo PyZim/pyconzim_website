@@ -1,0 +1,8 @@
+Django==1.10.3
+django-autoslug==1.9.3
+django-bootstrap3==7.1.0
+django-crispy-forms==1.6.1
+django-markitup==3.0.0
+Markdown==2.6.7
+Pillow==3.3.0
+pytest-django

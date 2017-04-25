@@ -1,0 +1,14 @@
+{% extends "website/base_two.html" %}
+{% load i18n %}
+{% block content %}
+
+
+{% for p in talk %}
+<h2>{{ p.title}}</h2>
+        <br />
+        <form action="{% url 'talks:edit_talk' %}" method=post>
+            {% crispy form form.helper %}
+            {% csrf_token %}
+        </form>
+</p>
+{% endblock %}

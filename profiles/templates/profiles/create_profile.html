@@ -1,0 +1,24 @@
+{% extends 'website/base_two.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+<h2>Create your profile </h2>
+<br>
+
+<form action="{% url 'profiles:create_profile' %}" method=post>
+    {% crispy form form.helper %}
+          {% csrf_token %}
+</form>
+
+      </div>
+    <div class="col-md-2">
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'website/base_two.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+<h2>Update your Profile </h2>
+<br>
+
+
+{% for p in user_profile %}
+
+<form action="{% url 'profiles:update' %}" method=post>
+    {% crispy form form.helper %}
+          {% csrf_token %}
+</form>
+
+{% endfor %}
+
+      </div>
+    <div class="col-md-2">
+
+    </div>
+</div>
+
+{% endblock %}
