@@ -25,4 +25,4 @@ class ProposalForm(forms.ModelForm):
         self.helper = FormHelper(self)
         self.helper.add_input(Submit('send', 'Submit'))
         self.helper.form_class = 'form-horizontal'
-        # submit_button = Submit('submit', _('Submit'))
+

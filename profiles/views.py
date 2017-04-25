@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, UpdateView, CreateView
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, UpdateView
 from django.core.urlresolvers import reverse_lazy
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
 from datetime import datetime
@@ -30,7 +30,6 @@ class ProfileView(TemplateView):
 
 class CreateProfileView(TemplateView):
     template_name = "profiles/create_profile.html"
-    # success_url = reverse_lazy('profiles:success')
 
     def get_context_data(self, **kwargs):
         context = super(CreateProfileView, self).get_context_data(**kwargs)
@@ -54,17 +53,18 @@ class CreateProfileView(TemplateView):
             obj.github_username = profile_form.cleaned_data['github_username']
             # finally save the object in db
             obj.save()
-            return reverse_lazy('profile:success')
+            return reverse_lazy('profile:profile_update')
 
 
 class UpdateProfileView(UpdateView):
     form_class = UpdateForm
     model = Profile
     template_name = "profiles/update.html"
-    success_url = reverse_lazy('profiles:success')
+    success_url = reverse_lazy('profiles:profile_update')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateProfileView, self).get_context_data(**kwargs)
+
         try:
             profile = get_object_or_404(User, pk=self.request.user.pk)
         except User.DoesNotExist:
@@ -78,14 +78,15 @@ class UpdateProfileView(UpdateView):
         return context
 
 
-class UpdateLoginView(TemplateView):
+class UpdateLoginView(UpdateView):
     form_class = UserForm
     model = User
     template_name = "profiles/login_details.html"
-    success_url = reverse_lazy('profiles:success')
+    success_url = reverse_lazy('profiles:profile_update')
 
     def get_context_data(self, **kwargs):
         context = super(UpdateLoginView, self).get_context_data(**kwargs)
+
         try:
             profile = User.objects.get(pk=self.request.user.pk)
         except User.DoesNotExist:
@@ -93,25 +94,28 @@ class UpdateLoginView(TemplateView):
 
         else:
             context['profile'] = profile
-        context['categories'] = get_category()
-        context['meetups'] = get_meetup()
         context['title'] = 'Update Login Details'
         context['year'] = datetime.now().year
         return context
 
 
-class PasswordView(TemplateView):
-    # form_class = PasswordForm
+class PasswordView(UpdateView):
     model = User
-    template_name = "profiles/password.html"
-    success_url = reverse_lazy('profiles:success')
+    form_class = PasswordForm
+    template_name = "profiles/password_change.html"
+    success_url = reverse_lazy('profiles:profile_update')
 
     def get_context_data(self, **kwargs):
         context = super(PasswordView, self).get_context_data(**kwargs)
         context['title'] = 'Change Password'
-        context['categories'] = get_category()
-        context['meetups'] = get_meetup()
-        context['form'] = PasswordForm()
+        try:
+            profile = get_object_or_404(User, pk=self.request.user.pk)
+        except User.DoesNotExist:
+            context['profile'] = ''
+            return HttpResponseRedirect('profiles:create_profile')
+
+        else:
+            context['profile'] = profile
         context['year'] = datetime.now().year
         return context
 
@@ -122,7 +126,5 @@ class SuccessView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SuccessView, self).get_context_data(**kwargs)
         context['title'] = 'Profile Update Successful'
-        context['categories'] = get_category()
-        context['meetups'] = get_meetup()
         context['year'] = datetime.now().year
         return context

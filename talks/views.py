@@ -1,55 +1,39 @@
 from django.shortcuts import reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import (
-    CreateView,
-    TemplateView,
-    UpdateView,
-    ListView,
-)
+from django.views.generic import TemplateView, UpdateView, ListView
 
 from datetime import datetime
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 from .models import Proposal
 from .forms import ProposalForm
 
 
-class CreateTalk(LoginRequiredMixin, CreateView):
-    model = Proposal
-    form_class = ProposalForm
+class CreateTalk(TemplateView):
     template_name = "talks/talk_form.html"
-    permission_denied_message = 'Please login or register to submit a talk'
-
-    def get_permission_denied_message(self):
-        return self.permission_denied_message
-    
-    def get_form_kwargs(self):
-        kwargs = super(CreateTalk, self).get_form_kwargs()
-        return kwargs
 
     def get_context_data(self, **kwargs):
         context = super(CreateTalk, self).get_context_data(**kwargs)
         context['title'] = "Submit Talk"
+        context['form'] = ProposalForm()
         context['year'] = datetime.now().year
         return context
-    
-    def get_form_valid_message(self):
-        msg = ugettext('Talk proposal <strong>{title}</strong> created.')
-        return format_html(msg, title=self.object.title)
-    
 
-    def form_valid(self, form):
-
-        self.object = form.save(commit=False)
-        self.object.author = self.request.user
-        self.object.save()
-        
-        # Save the author information as well (many-to-many fun)
-        form.save_m2m()
-        return HttpResponseRedirect(self.get_success_url())
+    def post(self, request):
+        talk_form = ProposalForm(request.POST)
+        if talk_form.is_valid():
+            # process the data in request_form.cleaned_data as required
+            obj = Proposal()  # gets new object
+            obj.author = self.request.user
+            obj.title = talk_form.cleaned_data['title']
+            obj.abstract = talk_form.cleaned_data['abstract']
+            obj.talk_type = talk_form.cleaned_data['talk_type']
+            obj.experience_level = talk_form.cleaned_data['experience_level']
+            # finally save the object in db
+            obj.save()
+            return reverse_lazy('talks:submitted')
 
 
 class TalkView(UpdateView):
@@ -57,10 +41,6 @@ class TalkView(UpdateView):
     form_class = ProposalForm
     model = Proposal
     success_url = reverse_lazy('talks:success')
-
-    def get_object(self,*args, **kwargs):
-        object = super(TalkView, self).get_object(*args, **kwargs)
-        return object
 
     def get_context_data(self, **kwargs):
         context = super(TalkView, self).get_context_data(**kwargs)
@@ -86,6 +66,6 @@ class SuccessView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SuccessView, self).get_context_data(**kwargs)
-        context['title'] = 'Talk Update Successful'
+        context['title'] = 'Talk Submission Successful'
         context['year'] = datetime.now().year
         return context

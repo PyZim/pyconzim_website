@@ -4,11 +4,22 @@
 
 
 {% for p in talk %}
+
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
 <h2>{{ p.title}}</h2>
         <br />
-        <form action="{% url 'talks:edit_talk' %}" method=post>
+        <form action="{% url 'talks:edit_talk' p.pk %}" method=post>
             {% crispy form form.helper %}
             {% csrf_token %}
         </form>
-</p>
+</div>
+    <div class="col-md-2">
+
+    </div>
+</div>
+
 {% endblock %}
