@@ -23,7 +23,7 @@ class SignUpView(CreateView):
 class LoginView(FormView):
     form_class = LoginForm
     template_name = 'accounts/login.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('website:home')
 
     def get_context_data(self, **kwargs):
         context = super(LoginView, self).get_context_data(**kwargs)
@@ -45,7 +45,7 @@ class LoginView(FormView):
 
         
 class LogOutView(RedirectView):
-    url = reverse_lazy('home')
+    url = reverse_lazy('website:home')
 
     def get(self, request, *args, **kwargs):
         logout(request)
