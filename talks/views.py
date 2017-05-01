@@ -44,6 +44,17 @@ def submit_talk(request):
         )
 
 
+class TalkList(TemplateView):
+    template_name = "talks/talk_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TalkList, self).get_context_data(**kwargs)
+        context['title'] = "Submitted Talks"
+        context['year'] = datetime.now().year
+        context['submitted_talks'] = Proposal.objects.filter(author=self.request.user.pk)
+        return context
+
+
 class TalkView(UpdateView):
     template_name = "talks/talk.html"
     form_class = ProposalForm
@@ -54,18 +65,7 @@ class TalkView(UpdateView):
         context = super(TalkView, self).get_context_data(**kwargs)
         context['title'] = "Talk Details"
         context['year'] = datetime.now().year
-        context['submitted_talk'] = get_object_or_404(Proposal, pk=Proposal.pk)
-        return context
-
-
-class TalkList(TemplateView):
-    template_name = "talks/talk_list.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(TalkList, self).get_context_data(**kwargs)
-        context['title'] = "Submitted Talks"
-        context['year'] = datetime.now().year
-        context['submitted_talks'] = Proposal.objects.filter(author=self.request.user.pk)
+        context['submitted_talk'] = get_object_or_404(Proposal, pk=self.kwargs['pk'])
         return context
 
 

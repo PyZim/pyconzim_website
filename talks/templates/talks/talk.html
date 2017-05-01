@@ -1,4 +1,5 @@
 {% extends "website/base_two.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -9,7 +10,7 @@
     <div class="col-md-8">
 <h2>{{ talk.title}}</h2>
         <br />
-        <form action="{% url 'talks:view_talk' talk.pk %}" method=post>
+        <form action="{% url 'talks:view_talk' pk=talk.pk %}" method=post>
             {% crispy form form.helper %}
             {% csrf_token %}
         </form>
