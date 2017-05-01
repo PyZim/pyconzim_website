@@ -1,5 +1,5 @@
 {% extends 'website/base_two.html' %}
-{% load i18n %}
+
 {% load crispy_forms_tags %}
 
 
@@ -10,7 +10,7 @@
 
     </div>
     <div class="col-md-8">
-    <form action="{% url 'talks:submit_talk' %}">
+    <form action="{% url 'talks:submit_talk' %}" method="post">
     {% crispy form form.helper %}
         {% csrf_token %}
         </form>
