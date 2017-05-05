@@ -3,25 +3,20 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
 
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
 <h2>Update your Profile </h2>
 <br>
 
-
-{% for p in user_profile %}
-
-<form action="{% url 'profiles:update' %}" method=post>
-    {% crispy form form.helper %}
-          {% csrf_token %}
+<form action="{% url 'profiles:update' user.pk %}" method=post>
+ {% crispy form form.helper %}
+        {% csrf_token %}
 </form>
 
-{% endfor %}
-
       </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
 
     </div>
 </div>

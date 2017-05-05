@@ -1,0 +1,23 @@
+[33mcommit 07ec7347859c80156733bbf8c2ff528e4a6a222d[m
+Author: hamub <hbutau35@gmail.com>
+Date:   Tue Apr 25 19:06:35 2017 +0200
+
+    fixed reverse for logout
+
+[33mcommit b759806be9a7b33278a492b1353bc2f54c8a569c[m
+Author: hamub <hbutau35@gmail.com>
+Date:   Tue Apr 25 18:49:47 2017 +0200
+
+    fixed login
+
+[33mcommit 5ff1bfabda36c3b89bd5ad2dacafde0e4926249b[m
+Author: Anna Makarudze <amakarudze@users.noreply.github.com>
+Date:   Tue Apr 25 17:04:37 2017 +0200
+
+    Create README.md
+
+[33mcommit 895b4a606be807159306c5fde3d7b18531b66dbe[m
+Author: Anna Makarudze <amakarudze@gmail.com>
+Date:   Tue Apr 25 17:00:31 2017 +0200
+
+    Initial commit

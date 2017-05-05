@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import SetPasswordForm, UserChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
 
@@ -18,8 +18,6 @@ class UpdateForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_id = 'id-Crispy_UpdateForm'
         self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-lg-4'
-        self.helper.field_class = 'col-lg-8'
         self.helper.add_input(Submit('update', 'Update Profile'))
 
 
@@ -34,12 +32,10 @@ class UserForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_id = 'id-Crispy_UserForm'
         self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-lg-4'
-        self.helper.field_class = 'col-lg-8'
         self.helper.add_input(Submit('update', 'Update Profile'))
 
 
-class PasswordForm(SetPasswordForm):
+class PasswordForm(PasswordChangeForm):
 
     def __init__(self, user, *args, **kwargs):
         self.user = user
@@ -48,9 +44,8 @@ class PasswordForm(SetPasswordForm):
         self.helper = FormHelper()
         self.helper.form_id = 'id-Crispy_UserForm'
         self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-lg-4'
-        self.helper.field_class = 'col-lg-8'
         self.helper.Layout(
+            'old_password',
             'password1',
             'password2'
         )

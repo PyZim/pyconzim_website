@@ -23,7 +23,7 @@ class SignUpView(CreateView):
 class LoginView(FormView):
     form_class = LoginForm
     template_name = 'accounts/login.html'
-    success_url = reverse_lazy('website:home')
+    success_url = reverse_lazy('profiles:profile_home')
 
     def get_context_data(self, **kwargs):
         context = super(LoginView, self).get_context_data(**kwargs)
@@ -43,9 +43,13 @@ class LoginView(FormView):
         else:
             return self.form_invalid(form)
 
-        
+
 class LogOutView(RedirectView):
+<<<<<<< HEAD
     url = reverse_lazy('website:home')
+=======
+    url = reverse_lazy('accounts:logged_out')
+>>>>>>> 3acae8edd7db34a23257eb32a482e534cc70d35c
 
     def get(self, request, *args, **kwargs):
         logout(request)
@@ -61,6 +65,15 @@ class SuccessView(TemplateView):
         context['year'] = datetime.now().year
         return context
 
+
+class LoggedOutView(TemplateView):
+    template_name = "accounts/logged_out.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(LoggedOutView, self).get_context_data(**kwargs)
+        context['title'] = 'Log out Successful'
+        context['year'] = datetime.now().year
+        return context
 
 
 
