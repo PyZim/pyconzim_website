@@ -45,11 +45,7 @@ class LoginView(FormView):
 
 
 class LogOutView(RedirectView):
-<<<<<<< HEAD
-    url = reverse_lazy('website:home')
-=======
     url = reverse_lazy('accounts:logged_out')
->>>>>>> 3acae8edd7db34a23257eb32a482e534cc70d35c
 
     def get(self, request, *args, **kwargs):
         logout(request)
