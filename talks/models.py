@@ -30,7 +30,7 @@ class Proposal(models.Model):
         default='',
         help_text="Anything else you would want the organizers to know."
         "Wi-fi requirments, if tutorial, number of people you can manage e.t.c"
-        "This will note be published on website"
+        "This will not be published on the website"
     )
     talk_type = models.CharField(choices=TALK_TYPES, max_length=1)
     proposal_id = models.AutoField(primary_key=True, default=None)
