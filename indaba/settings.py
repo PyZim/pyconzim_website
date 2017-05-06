@@ -26,7 +26,7 @@ SECRET_KEY = '1nknhf9s0e@qp=w56#n5&)zydl%vx7b*u9d2j3p-2p!*o2%eog'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+INTERNAL_IPS = ('127.0.0.1',)
 
 # Application definition
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'markitup',
     'autoslug',
+    # 'debug-toolbar',
     # My apps
     'website',
     'talks',
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'indaba.urls'
@@ -95,8 +97,12 @@ MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME':  'pyconzimw',
+        'USER': 'hamub',
+        'PASSWORD': 'Louis2353/?',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
     }
 }
 
@@ -148,4 +154,4 @@ os.path.join(BASE_DIR, "static"),)
 
 STATIC_URL = '/static/'
 
-LOGIN_URL = 'accounts.views.login'
+LOGIN_URL = 'accounts/login'

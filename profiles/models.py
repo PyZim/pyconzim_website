@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from libgravatar import Gravatar
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -11,6 +13,10 @@ class Profile(models.Model):
     home_page = models.CharField(max_length=255)
     twitter_handle = models.CharField(max_length=15)
     github_username = models.CharField(max_length=32)
+
+    def get_avatar_url(self, email):
+        g = Gravatar(email)
+        return g.get_image(size=100)
 
     def __str__(self):
         return u'%s' % self.user

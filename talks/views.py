@@ -23,6 +23,7 @@ def submit_talk(request):
             obj.author_id = request.user.pk
             obj.title = form.cleaned_data['title']
             obj.abstract = form.cleaned_data['abstract']
+            obj.notes = form.cleaned_data['notes']
             obj.talk_type = form.cleaned_data['talk_type']
             obj.experience_level = form.cleaned_data['experience_level']
             # finally save the object in db

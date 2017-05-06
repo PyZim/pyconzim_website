@@ -17,6 +17,7 @@ class ProfileView(TemplateView):
         context = super(ProfileView, self).get_context_data(**kwargs)
         context['title'] = "My Profile"
         context['year'] = datetime.now().year
+        context['avatar'] = Profile.get_avatar_url(self, email=self.request.user.email)
         context['details'] = User.objects.filter(username=self.request.user)
         try:
             user_profile = Profile.objects.filter(user=self.request.user)
