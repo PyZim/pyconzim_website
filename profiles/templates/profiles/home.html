@@ -9,7 +9,11 @@
 
 <br>
 <h2>Your Profile</h2>
-<br>
+</br>
+
+<div class=""> <img class="team-thumb img-circle" src="{{ avatar }}" alt=""> </div>
+
+
 <p><a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a></p>
 
 {% if user_profile %}
