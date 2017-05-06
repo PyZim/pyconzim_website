@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('website.urls', namespace='website')),
@@ -25,3 +26,4 @@ urlpatterns = [
     url(r'^talks/', include('talks.urls', namespace='talks')),
     url(r'^schedule/', include('schedule.urls', namespace='schedule')),
 ]
+
