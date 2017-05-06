@@ -15,9 +15,8 @@ class Profile(models.Model):
     github_username = models.CharField(max_length=32)
 
     def get_avatar_url(self, email):
-        # email = self.user.email
         g = Gravatar(email)
-        return g.get_image()
+        return g.get_image(size=100)
 
     def __str__(self):
         return u'%s' % self.user
