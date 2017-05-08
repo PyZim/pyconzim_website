@@ -28,6 +28,10 @@ class Proposal(models.Model):
     abstract = MarkupField(help_text="Describe what your talk is about")
     talk_type = models.CharField(choices=TALK_TYPES, max_length=1)
     proposal_id = models.AutoField(primary_key=True, default=None)
+    notes = models.TextField(default='', help_text = "Anything else you would want the organizers to know." 
+                             "Wi-fi requirments, if tutorial, number of people you can manage e.t.c."
+                             "This will not be published on website."
+                             )
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="proposals", default='')
     status = models.CharField(choices=STATUS, max_length=1, default='')
     experience_level = models.CharField(choices=EXPERIENCE_LEVEL, max_length=1, default='')

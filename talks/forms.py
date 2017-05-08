@@ -8,7 +8,8 @@ from markitup.widgets import MarkItUpWidget
 class ProposalForm(forms.ModelForm):
     class Meta:
         model = Proposal
-        fields = ('title', 'talk_type', 'abstract', 'experience_level')
+        fields = ('title', 'talk_type', 'abstract', 'experience_level', 'notes',)
+
         widgets = {
             'abstract': MarkItUpWidget(),
           }

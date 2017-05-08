@@ -25,6 +25,7 @@ def submit_talk(request):
             obj.abstract = form.cleaned_data['abstract']
             obj.talk_type = form.cleaned_data['talk_type']
             obj.experience_level = form.cleaned_data['experience_level']
+            obj.notes = form.cleaned_data['notes']
             # finally save the object in db
             obj.save()
 

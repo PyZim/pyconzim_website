@@ -5,7 +5,7 @@
     <div class="col-md-2">
 
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
 
 <br>
 <h2>Your Profile</h2>
@@ -20,7 +20,9 @@
     <br>
         <strong>Email Address:</strong> {{ detail.email }}
 </p>
-<p><a class="btn btn-default" href="{% url 'profiles:login_details' pk=detail.id %}">Update Your Personal Details Now &raquo;</a></p>
+<p><a class="btn btn-default" href="{% url 'profiles:login_details' pk=detail.id %}">Update Your Personal Details Now &raquo;</a>
+<a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a>
+</p>
 
 {% endfor %}
 
@@ -50,7 +52,9 @@
 {% endfor %}
 
 
-<p><a class="btn btn-default" href="{% url 'profiles:update' pk=user.id %}">Update Profile &raquo;</a></p>
+<p><a class="btn btn-default" href="{% url 'profiles:update' pk=user.id %}">Update Profile &raquo;</a>
+<a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a>
+</p>
 
 {% else %}
 
@@ -61,8 +65,8 @@
 {% endif %}
 
      </div>
-    <div class="col-md-2">
-
+    <div class="col-md-4">
+     <img class="team-thumb img-circle" src="{{ avatar }}" alt="">
     </div>
 </div>
 
