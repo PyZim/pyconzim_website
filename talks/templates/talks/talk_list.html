@@ -13,7 +13,7 @@
 
             {% for talk in submitted_talks %}
 
-            <p><a href="{% url 'talks:view_talk' pk=talk.pk %}">{{ talk.title }}</a></p>
+            <p><a href="{% url 'talks:edit_talk' pk=talk.pk %}">{{ talk.title }}</a></p>
 
             {% endfor %}
         {% endif %}

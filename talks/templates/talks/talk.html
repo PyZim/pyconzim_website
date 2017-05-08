@@ -8,13 +8,15 @@
 
     </div>
     <div class="col-md-8">
-<h2>{{ talk.title}}</h2>
+
+        <h2>Edit Talk: {{ talk.title}}</h2>
         <br />
-        <form action="{% url 'talks:view_talk' pk=talk.pk %}" method=post>
+        <form method=post>
             {% crispy form form.helper %}
             {% csrf_token %}
         </form>
-</div>
+
+    </div>
     <div class="col-md-2">
 
     </div>

@@ -11,7 +11,7 @@ class SignUpView(CreateView):
     form_class = RegistrationForm
     model = User
     template_name = 'accounts/signup.html'
-    success_url = reverse_lazy('accounts:success')
+    success_url = reverse_lazy('accounts:registration_done')
 
     def get_context_data(self, **kwargs):
         context = super(SignUpView, self).get_context_data(**kwargs)

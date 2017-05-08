@@ -148,4 +148,4 @@ os.path.join(BASE_DIR, "static"),)
 
 STATIC_URL = '/static/'
 
-LOGIN_URL = 'accounts.views.login'
+LOGIN_URL = '/accounts/login'

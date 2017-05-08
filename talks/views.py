@@ -59,13 +59,13 @@ class TalkView(UpdateView):
     template_name = "talks/talk.html"
     form_class = ProposalForm
     model = Proposal
-    success_url = reverse_lazy('talks:success')
+    success_url = reverse_lazy('talks:submitted')
 
     def get_context_data(self, **kwargs):
         context = super(TalkView, self).get_context_data(**kwargs)
         context['title'] = "Talk Details"
         context['year'] = datetime.now().year
-        context['submitted_talk'] = get_object_or_404(Proposal, pk=self.kwargs['pk'])
+        context['talk'] = get_object_or_404(Proposal, pk=self.kwargs['pk'])
         return context
 
 
