@@ -39,7 +39,7 @@ def submit_talk(request):
             "talks/talk_form.html",
             {
                 'title': 'Submit a Talk',
-                'year': datetime.year,
+                'year': datetime.now().year,
                 'form': form,
             }
         )
