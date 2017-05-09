@@ -16,7 +16,14 @@
             <p><a href="{% url 'talks:edit_talk' pk=talk.pk %}">{{ talk.title }}</a></p>
 
             {% endfor %}
+
+        {% else %}
+
+            <p>You have not submitted any talks yet.</p>
+
         {% endif %}
+
+        <p><a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a></p>
         <br />
 
 </div>
