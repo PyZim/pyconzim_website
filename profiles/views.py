@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, reverse
 from django.views.generic import TemplateView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
@@ -44,7 +44,7 @@ class CreateProfileView(TemplateView):
         if profile_form.is_valid():
             # process the data in request_form.cleaned_data as required
             obj = Profile()  # gets new object
-            obj.user = self.request.user
+            obj.user_id = self.request.user.pk
             obj.bio = profile_form.cleaned_data['bio']
             obj.location = profile_form.cleaned_data['location']
             obj.birth_date = profile_form.cleaned_data['birth_date']
@@ -54,7 +54,7 @@ class CreateProfileView(TemplateView):
             obj.github_username = profile_form.cleaned_data['github_username']
             # finally save the object in db
             obj.save()
-            return reverse_lazy('profile:profile_update')
+            return HttpResponseRedirect(reverse('profiles:profile_update'))
 
 
 class UpdateProfileView(UpdateView):
@@ -70,7 +70,6 @@ class UpdateProfileView(UpdateView):
             profile = get_object_or_404(User, pk=self.request.user.pk)
         except User.DoesNotExist:
             context['profile'] = ''
-            return HttpResponseRedirect('profiles:create_profile')
 
         else:
             context['profile'] = profile
