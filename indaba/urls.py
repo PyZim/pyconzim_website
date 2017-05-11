@@ -17,6 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 
+admin.site.site_header = "PyConZim 2017"
+admin.site.site_title = "PyComZIm 2017"
+admin.site.index_title = "PyConZim 2017"
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('website.urls', namespace='website')),
