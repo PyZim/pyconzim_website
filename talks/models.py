@@ -22,7 +22,6 @@ class Proposal(models.Model):
                         ('G', 'Good Python programmers level'),
                         ('E', 'Experienced Python programmers level'))
 
-
     # proposal = models.CharField(max_length=255, blank=False)
     title = models.CharField(max_length=1024)
     abstract = MarkupField(help_text="Describe what your talk is about")
