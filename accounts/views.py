@@ -43,6 +43,7 @@ class LoginView(FormView):
         else:
             return self.form_invalid(form)
 
+
 class LogOutView(RedirectView):
     url = reverse_lazy('accounts:logged_out')
 
@@ -69,9 +70,3 @@ class LoggedOutView(TemplateView):
         context['title'] = 'Log out Successful'
         context['year'] = datetime.now().year
         return context
-
-
-
-
-
-
