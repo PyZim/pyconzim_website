@@ -10,8 +10,6 @@
 <br>
 <h2>Your Profile</h2>
 <br>
-<p><a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a></p>
-
 {% if user_profile %}
 
 {% for detail in details %}
@@ -57,7 +55,6 @@
 <p><a class="btn btn-default" href="{% url 'profiles:update' pk=user.id %}">Update Profile &raquo;</a>
 <a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a>
 </p>
-
 
 {% else %}
 

@@ -18,13 +18,14 @@ from django.contrib import admin
 
 
 admin.site.site_header = "PyConZim 2017"
-admin.site.site_title = "PyConZIm 2017"
+admin.site.site_title = "PyComZIm 2017"
 admin.site.index_title = "PyConZim 2017"
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('website.urls', namespace='website')),
-    url(r'^', include('accounts.urls', namespace='accounts')),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     url(r'^talks/', include('talks.urls', namespace='talks')),
     url(r'^schedule/', include('schedule.urls', namespace='schedule')),

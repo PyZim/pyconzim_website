@@ -12,9 +12,7 @@
 <br>
 
 <form action="{% url 'accounts:login' %}" method=post>
-
     {% crispy form form.helper %}
-      
           {% csrf_token %}
     <input type="hidden" name="next" value="{{next}}" />
 </form>

@@ -8,9 +8,9 @@ from datetime import datetime
 
 from rest_framework import viewsets
 
+from .serializers import TalkSerializer
 from .models import Proposal
 from .forms import ProposalForm
-from .serializers import TalkSerializer
 
 
 @login_required
