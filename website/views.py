@@ -37,6 +37,7 @@ def home(request):
 
 
 def contact(request):
+    # check captcha
     if request.method == "POST":
         contact_form = ContactForm(request.POST)
 
@@ -65,7 +66,7 @@ def contact(request):
 
             # redirect to a new URL:
             return HttpResponseRedirect(reverse('website:thanks'))
-
+        
     else:
         # if a GET (or any other method) we'll create a blank form
         contact_form = ContactForm()

@@ -22,6 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '1nknhf9s0e@qp=w56#n5&)zydl%vx7b*u9d2j3p-2p!*o2%eog'
 
+RECAPTCHA_PUBLIC_KEY = '6LexKiEUAAAAAGlxwMYHWlwqf3yHwdbwPaLT8omK'
+RECAPTCHA_PRIVATE_KEY = '6LexKiEUAAAAABLwx8uU4xyLwZYefOASqDSxDSEZ'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     'markitup',
     'autoslug',
     'rest_framework',
+    'captcha',
     # 'debug-toolbar',
     # My apps
     'website',
