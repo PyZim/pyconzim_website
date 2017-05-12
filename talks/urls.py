@@ -1,9 +1,15 @@
+from rest_framework import routers
+
+from talks.views import TalkViewsSets
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from talks import views
 
 
 app_name = 'talks'
+router = routers.DefaultRouter()
+router.register(r'talks', TalkViewsSets)
+
 
 urlpatterns = [
     url(r'^submit_talk', login_required(views.submit_talk), name='submit_talk'),
@@ -12,3 +18,4 @@ urlpatterns = [
     url(r'^submitted', login_required(views.SuccessView.as_view()), name='submitted'),
     ]
 
+urlpatterns += router.urls

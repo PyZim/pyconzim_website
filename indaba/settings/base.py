@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     'markitup',
     'autoslug',
+    'rest_framework',
+    # 'debug-toolbar',
     # My apps
     'website',
     'talks',

@@ -30,3 +30,4 @@ urlpatterns = [
     url(r'^talks/', include('talks.urls', namespace='talks')),
     url(r'^schedule/', include('schedule.urls', namespace='schedule')),
 ]
+

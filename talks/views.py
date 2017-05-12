@@ -6,6 +6,9 @@ from django.views.generic import TemplateView, UpdateView, ListView
 
 from datetime import datetime
 
+from rest_framework import viewsets
+
+from .serializers import TalkSerializer
 from .models import Proposal
 from .forms import ProposalForm
 
@@ -78,3 +81,8 @@ class SuccessView(TemplateView):
         context['title'] = 'Talk Submission Successful'
         context['year'] = datetime.now().year
         return context
+
+
+class TalkViewsSets(viewsets.ReadOnlyModelViewSet):
+    serializer_class = TalkSerializer
+    queryset = Proposal.objects.all()

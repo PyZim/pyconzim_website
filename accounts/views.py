@@ -43,7 +43,6 @@ class LoginView(FormView):
         else:
             return self.form_invalid(form)
 
-        
 class LogOutView(RedirectView):
     url = reverse_lazy('accounts:logged_out')
 
