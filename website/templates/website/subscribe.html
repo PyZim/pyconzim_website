@@ -1,0 +1,7 @@
+{% load crispy_forms_tags %}
+<form action="{% url 'website:subscribe' %}" method="post">
+{% crispy subscribe_form subscribe_form.helper %}
+{% csrf_token %}
+{{ form }}
+</form>
+

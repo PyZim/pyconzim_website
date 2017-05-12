@@ -1,0 +1,76 @@
+{% extends 'website/base_two.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-6">
+
+<br>
+<h2>Your Profile</h2>
+<br>
+<p><a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a></p>
+
+{% if user_profile %}
+
+{% for detail in details %}
+<h3>Personal Details</h3>
+<p><strong>First Name:</strong> {{ detail.first_name }}
+<br>
+    <strong>Last Name:</strong> {{ detail.last_name }}
+    <br>
+        <strong>Email Address:</strong> {{ detail.email }}
+</p>
+<p><a class="btn btn-default" href="{% url 'profiles:login_details' pk=detail.id %}">Update Your Personal Details Now &raquo;</a>
+<a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a>
+</p>
+
+{% endfor %}
+
+<hr>
+
+{% for user_p in user_profile %}
+<h3>Bio Information</h3>
+<p><strong>Date of Birth:</strong> {{ user_p.birth_date }}
+    <br>
+    <strong>Bio:</strong> {{ user_p.bio }}</p>
+<hr>
+<h3>Contact Details</h3>
+<p>
+<strong>Contact Number:</strong> {{ user_p.contact_number }}
+    <br>
+<strong>Location:</strong> {{ user_p.location }}
+    <br>
+<strong>Home page:</strong> {{ user_p.home_page }}
+    <br>
+<strong>Twitter Handler:</strong> {{ user_p.twitter_handle }}
+    <br>
+<strong>GitHub Username:</strong> {{ user_p.github_username }}
+</p>
+
+
+</p>
+{% endfor %}
+
+
+<p><a class="btn btn-default" href="{% url 'profiles:update' pk=user.id %}">Update Profile &raquo;</a>
+<a class="btn btn-default" href="{% url 'talks:submit_talk' %}">Submit Talk! &raquo;</a>
+</p>
+
+
+{% else %}
+
+<p>You have not created a profile yet. Please click the button below to create your profile.</p>
+
+<br>
+<p><a class="btn btn-default" href="{% url 'profiles:create_profile' %}">Create Your Profile Now &raquo;</a></p>
+{% endif %}
+
+     </div>
+    <div class="col-md-4">
+     <img class="team-thumb img-circle" src="{{ avatar }}" alt="">
+    </div>
+</div>
+
+{% endblock %}

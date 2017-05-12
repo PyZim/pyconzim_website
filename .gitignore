@@ -1,0 +1,13 @@
+*.pyc
+__pycache__
+myvenv
+db.sqlite3
+/static
+.DS_Store
+production_settings.py
+logo_pretix.png
+.idea/
+htmlcov/
+.tox/
+tox.ini
+.cache/
