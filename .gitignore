@@ -13,3 +13,4 @@ htmlcov/
 tox.ini
 .cache/
 .idea/
+indaba/settings/production.py
