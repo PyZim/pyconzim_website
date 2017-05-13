@@ -20,12 +20,10 @@ class ProfileView(TemplateView):
         context['details'] = User.objects.filter(username=self.request.user)
         context['avatar'] = Profile.get_avatar_url(self, email=self.request.user.email)
         try:
-            user_profile = Profile.objects.filter(user=self.request.user)
+            user_profile = Profile.objects.filter(pk=self.request.user.pk)
+            context['user_profile'] = user_profile
         except Profile.DoesNotExist:
             context['user_profile'] = ''
-
-        else:
-            context['user_profile'] = user_profile
         return context
 
 
