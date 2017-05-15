@@ -22,6 +22,7 @@ admin.site.site_title = "PyComZIm 2017"
 admin.site.index_title = "PyConZim 2017"
 
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('website.urls', namespace='website')),

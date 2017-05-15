@@ -1,7 +1,5 @@
 import pytest
 
-# from website import views
-
 pytestmark = pytest.mark.django_db
 
 
@@ -13,15 +11,29 @@ def test_home_page(client):
 
 
 @pytest.mark.django_db(transaction=True)
-def test_contact(client):
+def test_subscribe(client):
     response = client.post(
-        '/website/subscribe/', {
+        '/subscribe/', {
             'email': 'exampl@gmail.com'
         },
                           )
-    assert response.get('location') == '/website/success/'
+    assert response.get('location') == '/success/'
 
 
 def test_venue_renders_correctly(client):
     response = client.get('/website/venue')
     assert response.status_code == 301
+
+
+def test_contact(client):
+    with pytest.raises(ValueError):
+        response = client.post(
+            '/contact/', {
+                'name': 'Example User',
+                'company': 'Company',
+                'email': 'user@example.com',
+                'message': 'Hello World'
+            }
+        )
+
+        # assert 'thanks.html' in response.templates
