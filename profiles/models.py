@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from libgravatar import Gravatar
+from slack_invitation  import register_slack_invitation
 
+
+register_slack_invitation()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

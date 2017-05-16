@@ -6,7 +6,6 @@ db.sqlite3
 .DS_Store
 production_settings.py
 logo_pretix.png
-<<<<<<< HEAD
 .idea/
 htmlcov/
 .tox/

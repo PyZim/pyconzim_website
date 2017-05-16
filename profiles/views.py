@@ -8,6 +8,7 @@ from datetime import datetime
 
 from .forms import UpdateForm, UserForm, PasswordForm
 from .models import Profile
+from .mixins import EditOwnProfileMixin
 
 
 class ProfileView(TemplateView):
@@ -55,7 +56,7 @@ class CreateProfileView(TemplateView):
             return HttpResponseRedirect(reverse('profiles:profile_update'))
 
 
-class UpdateProfileView(UpdateView):
+class UpdateProfileView(EditOwnProfileMixin, UpdateView):
     form_class = UpdateForm
     model = Profile
     template_name = "profiles/update.html"
