@@ -11,6 +11,7 @@ from rest_framework import viewsets
 from .serializers import TalkSerializer
 from .models import Proposal
 from .forms import ProposalForm
+from .mixins import EditOwnTalksMixin
 
 
 @login_required
@@ -59,7 +60,7 @@ class TalkList(TemplateView):
         return context
 
 
-class TalkView(UpdateView):
+class TalkView(EditOwnTalksMixin, UpdateView):
     template_name = "talks/talk.html"
     form_class = ProposalForm
     model = Proposal
