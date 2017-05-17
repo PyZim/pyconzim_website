@@ -1,6 +1,5 @@
 from django.core.exceptions import PermissionDenied
 
-
 class EditOwnProfileMixin():
     def get_object(self, *args, **kwargs):
         obj = super(EditOwnProfileMixin, self).get_object(*args, **kwargs)
@@ -13,3 +12,12 @@ class EditOwnProfileMixin():
                 return
             else:
                 raise PermissionDenied()
+
+class EditOwnLoginMixin():
+    def get_object(self, *args, **kwargs):
+        obj = super(EditOwnLoginMixin, self).get_object(*args, **kwargs)
+        if obj.email == self.request.user.email:
+            return obj
+        else:
+            raise PermissionDenied
+

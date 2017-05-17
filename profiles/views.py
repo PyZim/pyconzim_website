@@ -8,7 +8,7 @@ from datetime import datetime
 
 from .forms import UpdateForm, UserForm, PasswordForm
 from .models import Profile
-from .mixins import EditOwnProfileMixin
+from .mixins import EditOwnProfileMixin, EditOwnLoginMixin
 
 
 class ProfileView(TemplateView):
@@ -77,7 +77,7 @@ class UpdateProfileView(EditOwnProfileMixin, UpdateView):
         return context
 
 
-class UpdateLoginView(UpdateView):
+class UpdateLoginView(EditOwnLoginMixin, UpdateView):
     form_class = UserForm
     model = User
     template_name = "profiles/login_details.html"
