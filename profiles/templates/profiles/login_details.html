@@ -10,7 +10,7 @@
 <h2>Update your login details</h2>
 <br>
 
-<form action="{% url 'profiles:login_details' user.pk %}" method=post>
+<form action="" method=post>
     {% crispy form form.helper %}
           {% csrf_token %}
 </form>

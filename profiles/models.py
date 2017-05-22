@@ -8,7 +8,7 @@ from slack_invitation  import register_slack_invitation
 register_slack_invitation()
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, help_text="Tell us a bit about yourself and your work with Python", blank=False)
     location = models.CharField(max_length=30, help_text="City, Country", blank=False)
     birth_date = models.DateField(null=True, help_text="Please enter your date of birth in the format YYYY-MM-DD", blank=True)

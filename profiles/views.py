@@ -21,8 +21,7 @@ class ProfileView(TemplateView):
         context['details'] = User.objects.filter(username=self.request.user)
         context['avatar'] = Profile.get_avatar_url(self, email=self.request.user.email)
         try:
-            user_profile = Profile.objects.filter(pk=self.request.user.pk)
-            context['user_profile'] = user_profile
+            context['user_profile'] = Profile.objects.filter(user_id=self.request.user.pk)
         except Profile.DoesNotExist:
             context['user_profile'] = ''
         return context
@@ -64,16 +63,12 @@ class UpdateProfileView(EditOwnProfileMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UpdateProfileView, self).get_context_data(**kwargs)
-
-        try:
-            profile = get_object_or_404(User, pk=self.request.user.pk)
-        except User.DoesNotExist:
-            context['profile'] = ''
-
-        else:
-            context['profile'] = profile
-            context['title'] = 'Update Profile'
+        context['title'] = 'Update Profile'
         context['year'] = datetime.now().year
+        try:
+            context['profile'] = Profile.objects.filter(user_id=self.request.user.pk)
+        except Profile.DoesNotExist:
+            context['profile'] = ''
         return context
 
 
@@ -85,7 +80,6 @@ class UpdateLoginView(EditOwnLoginMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UpdateLoginView, self).get_context_data(**kwargs)
-
         try:
             profile = User.objects.get(pk=self.request.user.pk)
         except User.DoesNotExist:
