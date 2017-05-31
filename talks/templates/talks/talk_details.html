@@ -1,0 +1,23 @@
+{% extends "website/base_two.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+
+        <h2>{{ talk.title}} - {{ user_detail.first_name }} {{ user_detail.last_name}}</h2>
+
+        <br />
+        {{ talk.abstract }}
+
+    </div>
+    <div class="col-md-1">
+
+    </div>
+</div>
+
+{% endblock %}

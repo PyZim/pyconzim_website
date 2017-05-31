@@ -76,6 +76,7 @@
                             <li><a href="{% url 'talks:submit_talk' %}">Submit Talk</a></li>
                             <li><a href="{% url 'talks:talk_list' %}">Submitted Talks</a></li>
                             {% endif %}
+                            <li><a href="{% url 'talks:accepted_talks' %}">Accepted Talks</a>
                         </ul>
                     <li>
                         <a href="{% url 'website:cofc' %}">CoC</a>
@@ -143,7 +144,7 @@
     <script src="{% static 'website/js/scrollreveal.min.js' %}"></script>
     <script src="{% static 'website/js/jquery.easing.min.js' %}"></script>
     <script src="{% static 'website/js/jquery.fittext.js' %}"></script>
-    <script src="{% static 'website/js/jquery.magnific-popup.min.js"></script>
+    <script src="{% static 'website/js/jquery.magnific-popup.min.js' %}"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="{% static 'website/js/creative.js' %}"></script>
