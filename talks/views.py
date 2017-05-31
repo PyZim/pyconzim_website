@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect, HttpRequest
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, UpdateView, ListView
+from django.contrib.auth.models import User
 
 from datetime import datetime
 
@@ -87,3 +88,27 @@ class SuccessView(TemplateView):
 class TalkViewsSets(viewsets.ReadOnlyModelViewSet):
     serializer_class = TalkSerializer
     queryset = Proposal.objects.all()
+
+
+class AcceptedTalksView(TemplateView):
+    template_name = "talks/accepted_talks.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(AcceptedTalksView, self).get_context_data(**kwargs)
+        context['title'] = "Accepted Talks"
+        context['year'] = datetime.now().year
+        context['user_detail'] = User.objects.get(username=self.request.user)
+        context['accepted_talks'] = Proposal.objects.filter(status="A")
+        return context
+
+
+class TalkDetailView(TemplateView):
+    template_name = "talks/talk_details.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TalkDetailView, self).get_context_data(**kwargs)
+        context['title'] = "Accepted Talks"
+        context['year'] = datetime.now().year
+        context['user_detail'] = User.objects.get(username=self.request.user)
+        context['talk'] = Proposal.objects.get(pk=self.kwargs['pk'])
+        return context

@@ -16,6 +16,8 @@ urlpatterns = [
     url(r'^talk_list', login_required(views.TalkList.as_view()), name='talk_list'),
     url(r'^edit_talk/(?P<pk>\d+)/$', login_required(views.TalkView.as_view()), name='edit_talk'),
     url(r'^submitted', login_required(views.SuccessView.as_view()), name='submitted'),
+    url(r'^accepted_talks', views.AcceptedTalksView.as_view(), name='accepted_talks'),
+    url(r'^talk_details/(?P<pk>\d+)/$', views.TalkDetailView.as_view(), name='talk_details'),
     ]
 
 urlpatterns += router.urls

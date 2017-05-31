@@ -17,7 +17,7 @@
     <!-- Custom Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'website/font-awesome/css/font-awesome.min.css' %}" type="text/css">
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="{% static 'website/css/magnific-popup.css' %}" type="text/css">
@@ -76,6 +76,7 @@
                             <li><a href="{% url 'talks:submit_talk' %}">Submit Talk</a></li>
                             <li><a href="{% url 'talks:talk_list' %}">Submitted Talks</a></li>
                             {% endif %}
+                            <li><a href="{% url 'talks:accepted_talks' %}">Accepted Talks</a>
                         </ul>
                     <li>
                         <a href="{% url 'website:cofc' %}">CoC</a>
@@ -155,7 +156,7 @@
     <script src="{% static 'website/js/scrollreveal.min.js' %}"></script>
     <script src="{% static 'website/js/jquery.easing.min.js' %}"></script>
     <script src="{% static 'website/js/jquery.fittext.js' %}"></script>
-    <script src="{% static 'website/js/jquery.magnific-popup.min.js"></script>
+    <script src="{% static 'website/js/jquery.magnific-popup.min.js' %}"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="{% static 'website/js/creative.js' %}"></script>
