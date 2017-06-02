@@ -13,8 +13,8 @@
         {% if accepted_talks %}
             <p>Attending to PyCon Zimbabwe? Here are some of the talks to look forward to at PyCon Zimbabwe:</p>
             {% for talk in accepted_talks %}
-                <p><a href="{% url 'talks:talk_details' talk.pk %}">{{ talk.title }}  - {{ user_detail.first_name }}
-                    {{ user_detail.last_name}}</a></p>
+                <p><a href="{% url 'talks:talk_details' pk=talk.pk %}">{{ talk.title }}  - {{ talk.user.first_name }}
+                    {{ talk.user.last_name }}</a></p>
             {% endfor %}
         {% else %}
             <p>We haven't accepted any talks yet. We will update this page as soon as we have closed our CFP and

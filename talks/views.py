@@ -3,7 +3,6 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect, HttpRequest
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, UpdateView, ListView
-from django.contrib.auth.models import User
 
 from datetime import datetime
 
@@ -97,8 +96,7 @@ class AcceptedTalksView(TemplateView):
         context = super(AcceptedTalksView, self).get_context_data(**kwargs)
         context['title'] = "Accepted Talks"
         context['year'] = datetime.now().year
-        context['user_detail'] = User.objects.get(username=self.request.user)
-        context['accepted_talks'] = Proposal.objects.filter(status="A")
+        context['accepted_talks'] = Proposal.objects.filter(status='A').select_related('user')
         return context
 
 
@@ -109,6 +107,5 @@ class TalkDetailView(TemplateView):
         context = super(TalkDetailView, self).get_context_data(**kwargs)
         context['title'] = "Accepted Talks"
         context['year'] = datetime.now().year
-        context['user_detail'] = User.objects.get(username=self.request.user)
         context['talk'] = Proposal.objects.get(pk=self.kwargs['pk'])
         return context

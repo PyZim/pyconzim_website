@@ -9,7 +9,8 @@ from datetime import datetime
 
 
 from .forms import ContactForm, SubscribeForm
-from .models import Contact, Subscription, Sponsor
+from .models import Contact, Subscription 
+from sponsors.models import Sponsor
 
 
 def home(request):
@@ -17,8 +18,10 @@ def home(request):
     assert isinstance(request, HttpRequest)
     contact_form = ContactForm()
     subscribe_form = SubscribeForm()
-
-    corporates = Sponsor.objects.filter(type="C")
+    platinum = Sponsor.objects.filter(category="Platinum")
+    gold = Sponsor.objects.filter(category="Gold")
+    silver = Sponsor.objects.filter(category="Silver")
+    bronze = Sponsor.objects.filter(category="Bronze")
     individuals = Sponsor.objects.filter(type="I")
 
     return render(
@@ -30,7 +33,10 @@ def home(request):
             'year': datetime.now().year,
             'contact_form': contact_form,
             'subscribe_form': subscribe_form,
-            'corporates': corporates,
+            'platinum': platinum,
+            'gold': gold,
+            'silver': silver,
+            'bronze': bronze,
             'individuals': individuals,
         }
     )
