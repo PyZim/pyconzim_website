@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, Subscription, Sponsor
+from .models import Contact, Subscription
 
 
 class ContactAdmin(admin.ModelAdmin):
@@ -7,11 +7,5 @@ class ContactAdmin(admin.ModelAdmin):
     list_filter = ["name", "company", "email_date"]
 
 
-class SponsorAdmin(admin.ModelAdmin):
-    list_display = ("name", "category", "type")
-    list_filter = ["category", "type"]
-
-
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Subscription)
-admin.site.register(Sponsor, SponsorAdmin)

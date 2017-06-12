@@ -114,32 +114,7 @@ ZESA National Training Centre from the 23rd - 26th August 2017.</p>
     <section id="our-sponsors" class="text-center">
         <div class="container">
             <h2>Special Thanks to Our Sponsors</h2>
-
-            {% if corporates %}
-
-            <div class="row">
-		    {% for corporate in corporates %}
-		        <div class="col-xs-2">
-                    <a href="{{ corporate.website }}" target="_blank"><img src="{{ corporate.logo }}"></a>
-                </div>
-                {% endfor %}
-            {% endif %}
-            </div>
-            <br />
-            <hr>
-            <h2>Individual Sponsors</h2>
-            {% if individuals %}
-                    <div class="row">
-                        {% for individual in individuals %}
-		                <div class="col-xs-2">
-                            <a href="{{ individual.website }}" target="_blank">{{ individual.name }}</a>
-                        </div>
-                        {% endfor %}
-
-            {% endif %}
-                    </div>
-            <br />
-            <hr>
+            {% include 'sponsors/sponsors_snippet.html' %}
         </div>
     </section>
 

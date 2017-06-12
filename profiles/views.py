@@ -52,7 +52,7 @@ class CreateProfileView(TemplateView):
             obj.github_username = profile_form.cleaned_data['github_username']
             # finally save the object in db
             obj.save()
-            return HttpResponseRedirect(reverse('profiles:profile_update'))
+            return HttpResponseRedirect(reverse('profiles:profile_home'))
 
 
 class UpdateProfileView(EditOwnProfileMixin, UpdateView):

@@ -1,0 +1,73 @@
+  {% load staticfiles %}
+             {% if platinum %}
+            <h3>Platinum Sponsors</h3>
+            <br />
+             <div class="container">
+               {% for sponsor in platinum %}
+                    <div class="col-xs-2">
+                        <a href="{{ sponsor.website }}" target="_blank"><img src="{% static 'website/img/' %}{{ sponsor.logo }}"></a>
+                    </div>
+                {% endfor %}
+                  </div>
+            {% endif %}
+
+            <br />
+
+             {% if gold %}
+            <h3>Gold Sponsors</h3>
+            <br />
+            <div class="container">
+            {% for sponsor in gold %}
+                <div class="col-xs-2">
+                    <a href="{{ sponsor.website }}" target="_blank"><img src="{% static 'website/img/' %}{{ sponsor.logo }}"></a>
+                </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+
+            <br />
+
+             {% if silver %}
+            <h3>Silver Sponsors</h3>
+            <br />
+            <div class="container">
+            {% for sponsor in silver %}
+                <div class="col-xs-2">
+                    <a href="{{ sponsor.website }}" target="_blank"><img src="{% static 'website/img/' %}{{ sponsor.logo }}"></a>
+                </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+
+
+            <br />
+
+                 {% if bronze %}
+            <h3>Bronze Sponsors</h3>
+            <br />
+            <div class="container">
+            {% for sponsor in bronze %}
+                <div class="col-xs-3">
+                    <a href="{{ sponsor.website }}" target="_blank"><img src="{% static 'website/img/' %}{{ sponsor.logo }}"></a>
+                </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+
+
+             <br />
+            <hr>
+            <h2>Individual Sponsors</h2>
+            {% if individuals %}
+                    <div class="row">
+                        {% for individual in individuals %}
+                        <br />
+		                <div class="col-xs-3">
+                            <a href="{{ individual.website }}" target="_blank">{{ individual.name }}</a>
+                        </div>
+                        {% endfor %}
+
+            {% endif %}
+                    </div>
+            <br />
+            <hr>
