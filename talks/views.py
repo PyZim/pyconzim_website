@@ -24,7 +24,7 @@ def submit_talk(request):
         if form.is_valid():
             # process the data in form.cleaned_data as required
             obj = Proposal()  # gets new object
-            obj.author_id = request.user.pk
+            obj.user_id = request.user.pk
             obj.title = form.cleaned_data['title']
             obj.abstract = form.cleaned_data['abstract']
             obj.talk_type = form.cleaned_data['talk_type']
@@ -56,7 +56,7 @@ class TalkList(TemplateView):
         context = super(TalkList, self).get_context_data(**kwargs)
         context['title'] = "Submitted Talks"
         context['year'] = datetime.now().year
-        context['submitted_talks'] = Proposal.objects.filter(author=self.request.user.pk)
+        context['submitted_talks'] = Proposal.objects.filter(user=self.request.user.pk)
         return context
 
 
