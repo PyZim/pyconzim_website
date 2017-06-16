@@ -29,7 +29,7 @@ class ProfileView(TemplateView):
 
 class CreateProfileView(TemplateView):
     template_name = "profiles/create_profile.html"
-
+    
     def get_context_data(self, **kwargs):
         context = super(CreateProfileView, self).get_context_data(**kwargs)
         context['title'] = 'Create Profile'
@@ -52,7 +52,10 @@ class CreateProfileView(TemplateView):
             obj.github_username = profile_form.cleaned_data['github_username']
             # finally save the object in db
             obj.save()
-            return HttpResponseRedirect(reverse('profiles:profile_home'))
+            return HttpResponseRedirect(reverse_lazy('profiles:profile_home'))
+			
+        else:
+	        return HttpResponseRedirect(reverse_lazy('profiles:create_profile'))
 
 
 class UpdateProfileView(EditOwnProfileMixin, UpdateView):
