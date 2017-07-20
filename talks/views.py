@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect, HttpRequest
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, UpdateView, ListView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from datetime import datetime
 
@@ -96,7 +97,19 @@ class AcceptedTalksView(TemplateView):
         context = super(AcceptedTalksView, self).get_context_data(**kwargs)
         context['title'] = "Accepted Talks"
         context['year'] = datetime.now().year
-        context['accepted_talks'] = Proposal.objects.filter(status='A').select_related('user')
+        talks_list = Proposal.objects.filter(status='A').select_related('user')
+
+        paginator = Paginator(talks_list, 10)  # Show 10 posts per page
+        page = self.request.GET.get('page')
+        try:
+            accepted_talks = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            accepted_talks = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            accepted_talks = paginator.page(paginator.num_pages)
+        context['accepted_talks'] = accepted_talks
         return context
 
 
