@@ -5,10 +5,14 @@ from django.http import HttpRequest, HttpResponseRedirect
 
 from datetime import datetime
 
+from .models import TalkSchedule, Day, Event
 
 def schedule(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
+
+    schedule_one = TalkSchedule.objects.filter(conference_day='1').select_related('talk')
+    schedule_two = TalkSchedule.objects.filter(conference_day='2').select_related('talk')
 
     return render(
         request,
@@ -17,5 +21,7 @@ def schedule(request):
             'title': 'Schedule',
             'message': 'Schedule',
             'year': datetime.now().year,
+            'schedule_one': schedule_one,
+            'schedule_two': schedule_two,
         }
     )
