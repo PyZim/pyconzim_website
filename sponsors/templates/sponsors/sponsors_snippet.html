@@ -58,16 +58,18 @@
              <br />
             <hr>
             <h2>Individual Sponsors</h2>
-            {% if individuals %}
-                    <div class="row">
+            <div class="container-fluid">
+                <div class="row">
+                    {% if individuals %}
                         {% for individual in individuals %}
-                        <br />
 		                <div class="col-xs-3">
                             <h4><a href="{{ individual.website }}" target="_blank">{{ individual.name }}</a></h4>
                         </div>
                         {% endfor %}
 
-            {% endif %}
-                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
             <br />
             <hr>
