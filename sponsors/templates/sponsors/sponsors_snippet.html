@@ -32,7 +32,7 @@
             <br />
             <div class="container">
             {% for sponsor in silver %}
-                <div class="col-xs-2">
+                <div class="col-md-4 col-sm-6">
                     <a href="{{ sponsor.website }}" target="_blank"><img src="{% static 'website/img/' %}{{ sponsor.logo }}"></a>
                 </div>
                 {% endfor %}
@@ -47,7 +47,7 @@
             <br />
             <div class="container">
             {% for sponsor in bronze %}
-                <div class="col-xs-3">
+                <div class="col-md-4 col-sm-6">
                     <a href="{{ sponsor.website }}" target="_blank"><img src="{% static 'website/img/' %}{{ sponsor.logo }}"></a>
                 </div>
                 {% endfor %}
@@ -62,7 +62,7 @@
                 <div class="row">
                     {% if individuals %}
                         {% for individual in individuals %}
-		                <div class="col-xs-3">
+		                <div class="col-md-3 col-sm-4">
                             <h4><a href="{{ individual.website }}" target="_blank">{{ individual.name }}</a></h4>
                         </div>
                         {% endfor %}
