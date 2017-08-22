@@ -11,8 +11,8 @@ def schedule(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
 
-    schedule_one = TalkSchedule.objects.filter(conference_day='1').select_related('talk')
-    schedule_two = TalkSchedule.objects.filter(conference_day='2').select_related('talk')
+    schedule_one = TalkSchedule.objects.filter(conference_day='1').select_related('talk').order_by('start_time')
+    schedule_two = TalkSchedule.objects.filter(conference_day='2').select_related('talk').order_by('start_time')
 
     return render(
         request,
