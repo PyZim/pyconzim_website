@@ -1,14 +1,12 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Field
-from captcha.fields import ReCaptchaField
 
 
 from .models import Contact, Subscription
 
 
 class ContactForm(forms.ModelForm):
-    captcha = ReCaptchaField()
 
     class Meta:
         model = Contact

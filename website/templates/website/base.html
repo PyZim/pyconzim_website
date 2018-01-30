@@ -48,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">PyConZim 2017</a>
+                <a class="navbar-brand page-scroll" href="#page-top">PyConZim 2018</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -113,6 +113,9 @@
                             <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
                         </ul>
                     {% endif %}
+                    <li>
+                        <a href="{% url 'website:pyconzim_2017' %}">2017</a>
+                    </li>
 
                 </ul>
             </div>
@@ -148,6 +151,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{% static 'website/js/creative.js' %}"></script>
+
+    <!-- Google Recaptcha Script -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </body>
 

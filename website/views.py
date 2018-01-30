@@ -210,3 +210,18 @@ def accommodation(request):
             'year': datetime.now().year,
         }
     )
+
+
+def pyconzim_2017(request):
+    """Renders the accommodation page."""
+    assert isinstance(request, HttpRequest)
+
+    return render(
+        request,
+        'website/pyconzim_2017.html',
+        {
+            'title': 'PyCon Zimbabwe 2017',
+            'message': 'PyCon Zimbabwe 2017',
+            'year': datetime.now().year,
+        }
+    )

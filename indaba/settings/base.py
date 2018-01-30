@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'markitup',
     'autoslug',
     'rest_framework',
-    'captcha',
+    # 'captcha',
     # 'debug-toolbar',
     # My apps
     'website',
