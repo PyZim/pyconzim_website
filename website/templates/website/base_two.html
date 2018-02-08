@@ -92,6 +92,12 @@
                     <li>
                         <a class="page-scroll" href="{% url 'website:home' %}#contact">Contact</a>
                     </li>
+                    <li>
+                        <a href="{% url 'website:pyconzim_2017' %}">2017</a>
+                    </li>
+                    <li>
+                        <a href="#">Django Summit Africa 2018</a>
+                    </li>
                     {% if user.is_authenticated %}
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">Hello {{ user.username }}! <b class="caret"></b></a>
@@ -101,6 +107,7 @@
                             <li><a href="{% url 'profiles:login_details'  user.pk %}">Log in Details</a></li>
                             <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
                         </ul>
+                    </li>
 
                     {% else %}
 
@@ -110,11 +117,8 @@
                             <li><a href="{% url 'accounts:login' %}">Log in</a></li>
                             <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
                         </ul>
-                    {% endif %}
-                    <li>
-                        <a href="{% url 'website:pyconzim_2017' %}">2017</a>
                     </li>
-
+                    {% endif %}
                 </ul>
 
             </div>
