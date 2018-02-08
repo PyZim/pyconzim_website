@@ -1,5 +1,5 @@
-Pycon Zim 
-=========
+Pycon Zim Website
+======================
 
 .. image:: https://img.shields.io/travis/PyZim/pyconzim_website.svg
         :target: https://travis-ci.org/PyZim/pyconzim_website
