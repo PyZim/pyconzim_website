@@ -10,6 +10,8 @@
 <h2>PyConZim Schedule</h2>
         <br />
 
+    {% if schedule_one %}
+
         <p> THURSDAY 23 AUGUST 2018</p>
         <div class="datagrid">
             <table border="1">
@@ -34,10 +36,12 @@
 
             </table>
         </div>
-
+    {% else %}
+        <p> We will publish the schedule one we have completed the selection process.</p>
+    {% endif %}
         <br />
         <br />
-
+    {% if schedule_two %}
         <p> FRIDAY 24 AUGUST 2018</p>
         <div class="datagrid">
             <table border="1">
@@ -62,11 +66,9 @@
 
             </table>
         </div>
-
-        <br />
-        <br />
-
-       
+    {% else %}
+        <p></p>
+    {% endif %}
    </div>
     <div class="col-md-1">
 

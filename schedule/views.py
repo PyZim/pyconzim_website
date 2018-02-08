@@ -5,7 +5,7 @@ from django.http import HttpRequest, HttpResponseRedirect
 
 from datetime import datetime
 
-from .models import TalkSchedule, Day, Event
+from .models import TalkSchedule
 
 def schedule(request):
     """Renders the home page."""
