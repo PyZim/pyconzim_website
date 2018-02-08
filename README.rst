@@ -1,4 +1,4 @@
-Pycon Zim 2017 Website
+Pycon Zim Website
 ======================
 
 .. image:: https://img.shields.io/travis/PyZim/pyconzim_website.svg
