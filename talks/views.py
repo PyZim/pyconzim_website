@@ -120,5 +120,5 @@ class TalkDetailView(TemplateView):
         context = super(TalkDetailView, self).get_context_data(**kwargs)
         context['title'] = "Accepted Talks"
         context['year'] = datetime.now().year
-        context['talk'] = Proposal.objects.get(pk=self.kwargs['pk'])
+        context['talk'] = get_object_or_404(Proposal, pk=self.kwargs['pk'])
         return context
