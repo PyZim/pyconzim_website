@@ -7,68 +7,11 @@
 
     </div>
     <div class="col-md-10">
-<h2>PyConZim Schedule</h2>
+    <h2>PyConZim Schedule</h2>
         <br />
 
-    {% if schedule_one %}
-
-        <p> THURSDAY 23 AUGUST 2018</p>
-        <div class="datagrid">
-            <table border="1">
-                <thread>
-                    <tr>
-                        <th width="200px"><strong>TIME</strong></th>
-                        <th width="200px"><strong>TITLE</strong></th>
-                        <th width="200px"><strong>SPEAKER</strong></th>
-                        <th width="200px"><strong>TALK TYPE</strong></th>
-                        <th width="200px"><strong>ROOM</strong></th>
-                    </tr>
-                </thread>
-                {% for talks in schedule_one %}
-                    <tr>
-                        <td width="200px">{{ talks.start_time.time }} - {{ talks.end_time.time }}</td>
-                        <td width="200px">{{ talks.talk.title }}</td>
-                        <td width="200px">{{ talks.talk.user.first_name }} {{ talks.talk.user.last_name }}</td>
-                        <td width="200px">{{ talks.talk.talk_type }}</td>
-                        <td width="200px">{{ talks.room }}</td>
-                    </tr>
-                {% endfor %}
-
-            </table>
-        </div>
-    {% else %}
         <p> We will publish the schedule one we have completed the selection process.</p>
-    {% endif %}
-        <br />
-        <br />
-    {% if schedule_two %}
-        <p> FRIDAY 24 AUGUST 2018</p>
-        <div class="datagrid">
-            <table border="1">
-                <thread>
-                    <tr>
-                        <th width="200px"><strong>TIME</strong></th>
-                        <th width="200px"><strong>TITLE</strong></th>
-                        <th width="200px"><strong>SPEAKER</strong></th>
-                        <th width="200px"><strong>TALK TYPE</strong></th>
-                        <th width="200px"><strong>ROOM</strong></th>
-                    </tr>
-                </thread>
-                {% for talks in schedule_two %}
-                    <tr>
-                        <td width="200px">{{ talks.start_time.time }} - {{ talks.end_time.time }}</td>
-                        <td width="200px">{{ talks.talk.title }}</td>
-                        <td width="200px">{{ talks.talk.user.first_name }} {{ talks.talk.user.last_name }}</td>
-                        <td width="200px">{{ talks.talk.talk_type }}</td>
-                        <td width="200px">{{ talks.room }}</td>
-                    </tr>
-                {% endfor %}
 
-            </table>
-        </div>
-    {% else %}
-        <p></p>
-    {% endif %}
    </div>
     <div class="col-md-1">
 
