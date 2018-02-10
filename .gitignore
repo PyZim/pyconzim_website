@@ -13,3 +13,5 @@ tox.ini
 .cache/
 .idea/
 indaba/settings/production.py
+.project
+.pydevproject

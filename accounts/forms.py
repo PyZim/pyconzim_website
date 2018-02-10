@@ -7,6 +7,8 @@ from crispy_forms.layout import Layout, Submit
 
 class RegistrationForm(UserCreationForm):
 
+    email = forms.CharField(max_length=75, required=True)
+
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
 
